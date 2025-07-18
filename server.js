@@ -60,6 +60,17 @@ const server = http.createServer((req, res)=>{
             "status":"succeess"
         }
         res.end(JSON.stringify(data));
+    }else if (req.method === 'POST' && req.url === '/registro') {// el === y el == son diferentes, el primero compara el tipo de dato y el segundo no
+        console.log("Datos recibidos de /registro", req.body); //salta undefined porque no estamos enviando nada
+        res.end(JSON.stringify({mensaje: "Se creo correctamente"}));
+    }else if (req.method === 'PUT' && req.url === '/actualizar'){
+        res.end(JSON.stringify({mensaje: "Se actualizo correctamente"}));
+    }else if (req.method === 'DELETE' && req.url === '/eliminar'){
+        res.end(JSON.stringify({mensaje: "Se elimino correctamente"}));
+    }else if (req.method === 'PATCH' && req.url === '/actualizar'){
+        res.end(JSON.stringify({mensaje: "Se actualizo2 correctamente"}));
+    }else{
+        res.warn("Error de metodo o url");
     }
 
 });
